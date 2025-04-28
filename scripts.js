@@ -39,7 +39,7 @@ form.onsubmit = (event) => {
 function convertCurrency(amount, price, symbol){
   try {
     // Alterando descrição do valor da moeda.
-    description.textContent = `${symbol} 1 = ${price}` 
+    description.textContent = `${symbol} 1 = ${formateCurrencyBRL(price)}` 
     
     // Aplica a classe que exibe o footer para mostrar o resultado.
     footer.classList.add("show-result")
@@ -50,4 +50,12 @@ function convertCurrency(amount, price, symbol){
     footer.classList.remove("show-result")
     alert("Não foi possivel converter. Tente novamente mais tarde!")
   }
+}
+
+// função para formatar moeda para BRL
+function formateCurrencyBRL (value){
+  return Number(value).toLocaleString("pt-BR",{
+    style: "currency",
+    currency: "BRL"
+  })
 }
